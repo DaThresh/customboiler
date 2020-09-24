@@ -1,6 +1,6 @@
 {
    "name": "andrewboiler",
-   "version": "0.1.0",
+   "version": "0.1.1",
    "description": "Andrew's boilerplate, forked from Matt Delong's customboiler",
    "scripts": {
       "start": "node ./server/server.js",
