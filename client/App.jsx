@@ -1,43 +1,27 @@
 import { hot } from 'react-hot-loader/root';
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
 
+// Styles
 import './app.css';
 
 function App() {
-  const dispatch = useDispatch();
-  const { count, name } = useSelector((state)=> ({
-    ...state.countReducer,
-    ...state.nameReducer
-  }));
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState('');
 
-  const add = ()=> {
-    dispatch({
-      type: 'ADD'
-    });
-  };
+  const add = () => setCount(prevCount => prevCount + 1);
 
-  const subtract = ()=> {
-    dispatch({
-      type: 'SUBTRACT'
-    });
-  };
+  const subtract = () => setCount(prevCount => prevCount - 1);
 
-  const updateName = (e)=> {
-    dispatch({
-      type: 'UPDATE_NAME',
-      payload: e.target.value
-    });
-  };
+  const updateName = (event) => setName(event.currentTarget.value);
 
   return (
     <>
-      <div id='test'>
-        <h1 className='count'>{`Counter: ${count}`}</h1>
+      <div id="boiler">
+        <h1 className="count">Counter: {count}</h1>
         <button onClick={add}>+</button>
         <button onClick={subtract}>-</button>
-        <h1 className='name'>{`Name: ${name}`}</h1>
-        <input placeholder='Input your name' onChange={updateName}/>
+        <h1 className="name">Name: {name}</h1>
+        <input placeholder="Input your name" onChange={updateName} value={name} />
       </div>
     </>
   );

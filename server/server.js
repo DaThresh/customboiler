@@ -1,9 +1,7 @@
 const express = require('express');
-const open = require('open');
-
-const port = 3005;
-const sPort = 8443;
 const app = express();
+
+const port = 8000;
 
 // Webpack Middleware must come first
 if(process.env.NODE_ENV !== "production"){
@@ -22,9 +20,6 @@ if(process.env.NODE_ENV !== "production"){
   }));
 }
 
-app.use(express.static(`${__dirname}/../public/`));
+app.use(express.static(__dirname + '/../public/'));
 
-app.listen(port, () => {
-  console.log(`App listening on port ${port}.\n`);
-  open(`http://localhost:${port}`);
-});
+app.listen(port, () => console.log('App listening on port ' + port));
